@@ -1,14 +1,14 @@
 {
     "name": "by-blog",
     "title": "BY Blog",
-    "author": "BY <qiubaiyingios@163.com>",
+    "author": "BY <lanpang999@foxmail.com>",
     "version": "1.7.0",
-    "homepage": "http://qiubaiying.github.io",
+    "homepage": "http://lanpan999.github.io",
     "repository": {
         "type": "git",
-        "url": "https://github.com/qiubaiying/qiubaiying.github.io"
+        "url": "https://github.com/lanpan999/lanpan999.github.io"
     },
-    "bugs": "https://github.com/qiubaiying/qiubaiying.github.io/issues",
+    "bugs": "https://github.com/lanpan999/lanpan999.github.io/issues",
     "devDependencies": {
         "grunt": "~0.4.5",
         "grunt-contrib-less": "~0.11.4",
