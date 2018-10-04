@@ -4,7 +4,7 @@ SEOTitle: 蓝胖的博客 | BY Blog
 header-img: img/post-bg-desk.jpg
 email: lanpang999@gmail.com
 description: "Every failure is leading towards success."
-keyword: "蓝胖的博客,渗透测试, 网络安全"
+keyword: "蓝胖的博客,渗透测试,网络安全,WEB安全,信息安全,python工具"
 url: "http://lanpan999.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/lanpan999/lanpan999.github.io.git" # you code repository
