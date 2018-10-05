@@ -1,6 +1,6 @@
 # Site settings
 title: 蓝胖
-SEOTitle: 蓝胖的博客 | 渗透测试 | 网络安全 | WEB安全
+SEOTitle: 蓝胖的博客|渗透测试
 header-img: img/post-bg-desk.jpg
 email: lanpang999@gmail.com
 description: "Every failure is leading towards success."
@@ -100,15 +100,15 @@ service-worker: true
 friends: [
     {
         title: "WY",
-        href: "http://zhengwuyang.com"
+        href: "http://wooyun.jozxing.cc/"
     },{
-        title: "简书·BY",
-        href: "http://www.jianshu.com/u/e71990ada2fd"
+        title: "FreeBuf",
+        href: "http://www.freebuf.com/"
     },{
-        title: "Apple",
-        href: "https://apple.com"
+        # title: "Apple",
+        # href: "https://apple.com"
     },{
-        title: "Apple Developer",
-        href: "https://developer.apple.com/"
+        # title: "Apple Developer",
+        # href: "https://developer.apple.com/"
     }
 ]
