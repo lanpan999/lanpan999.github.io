@@ -1,0 +1,142 @@
+---
+layout:     post
+title:      Masscan 全网扫描器笔记
+subtitle:   6分钟扫描全网
+date:       2018-10-09
+author:     蓝胖
+header-img: img/post-bg-2018-10-09.jpg
+catalog: true
+tags:
+    - Masscan
+    - 扫描
+
+---
+
+>“近十年来我自认为是一个作风正派的男人， 从不抽烟，不喝酒，不乱跟女孩打情骂俏…… 我也是一个生活习惯好的男人，我晚上从不泡吧逛夜店。9点准时上床睡觉 早上6点准时起床，我性格好，文静，随和，非常听话 ……直到三天前，这一切都变了，因为，我终于出狱了！”
+
+介绍
+==
+
+ - Masscan与Zmap类似，同样采用了无状态的扫描技术。
+ - 允许自定义任意的地址范围和端口范围；
+ - 设置黑白名单；
+ - 设置扫描速率；
+ - 指定发包的源IP地址、源端口和源MAC地址进行伪装。
+ - 结果输出支持xml、binary、JSON、list等多种格式。
+ - 为了配合用户的各种扫描需求，Masscan提供了重试次数、UA字段值、发出数据包的TTL值、发包后的等待时间等扫描设置。
+ - Banner获取直接在扫描命令里使用—banners即可
+
+
+安装(Kali)
+=======
+
+```
+$ sudo apt-get install clang git gcc make libpcap-dev
+$ git clone https://github.com/robertdavidgraham/masscan
+$ cd masscan
+$ make
+```
+
+常用操作
+=======
+###快速开始
+ >  msscan 10.11.0.0/16 -p80,81-90
+###扫描全网
+> masscan 0.0.0.0/0 -p0-65535 --excludefile exclude.txt
+
+
+###扫描速度
+默认扫描速度为每秒100个数据包，**-rate**修改扫描速度，比如每秒100,000个数据包
+>  msscan 10.11.0.0/16 -p80 --rate 100000
+
+###排除目标
+为了不被查水表，在进行大范围扫描的时候一定要用**--excludefile**排除部分地址
+>  msscan 10.11.0.0/16 -p80 --excludefile exclude.txt
+
+###保存结果
+ > **-oL filename：输出list格式**
+ [![iYFI54.png](https://s1.ax1x.com/2018/10/09/iYFI54.png)](https://imgchr.com/i/iYFI54)
+  **-oX filename：输出XML格式**
+  [![iYFTPJ.md.png](https://s1.ax1x.com/2018/10/09/iYFTPJ.md.png)](https://imgchr.com/i/iYFTPJ)
+    **-oG filename：输出grepable格式**
+[![iYF5aF.png](https://s1.ax1x.com/2018/10/09/iYF5aF.png)](https://imgchr.com/i/iYF5aF)
+   **-oJ filename：输出JSON格式**
+ [![iYF7G9.md.png](https://s1.ax1x.com/2018/10/09/iYF7G9.md.png)](https://imgchr.com/i/iYF7G9)
+
+
+  
+###创建配置文件
+> rate = 100000
+output-format = list
+output-status = all
+output-filename = xxx.xxx
+ports = 0-65535
+range = 0.0.0.0-255.255.255.255
+excludefile = exclude.txt
+
+扫描时,用 -c 加载配置文件,就不用每次都重复了
+  
+  
+###保存当前扫描配置
+ 使用 --echo 讲当前扫描的配置保存为一个文件，使用 -c 调用该配置文件扫描
+ > masscan -p80 144.76.183.0/24 --rate 10000 --echo > mycon.conf
+masscan -c mycon.conf 
+
+
+###banner 
+获取目标应用的banner信息,––source-ip 是指定源IP，这个ip必须指定独立有效的IP地址
+> masscan -p80 144.76.183.0/24 --banners --source-ip 192.168.121.121
+
+
+
+###PF_RING（未尝试）
+如果您想获得超过两百万每秒的速度，您需要一个英特尔10-Gbps网卡和一个被称为PF_RING [DNA][1]的特殊驱动程序。masscan使用PF_RING不要进行重建，你只需要建立以下组件即可:
+> libpfring.so (安装于 /usr/lib/libpfring.so)
+pf_ring.ko (pf_ring自己的内核驱动)
+ixgbe.ko (英特尔10-gbps网卡驱动)
+你不要建立自己的libpcap.so
+
+当masscan检测到网卡为dna0时，将自动切换为PF_RING模式
+
+
+
+其他参数：
+ > <ip/range> IP地址范围，有三种有效格式，1、单独的IPv4地址 2、类似"10.0.0.1-10.0.0.233"的范围地址 3、CIDR地址 类似于"0.0.0.0/0"，多个目标可以用都好隔开
+-c <filename>, --conf <filename> 读取配置文件进行扫描
+-e <ifname> , --adapter <ifname> 指定用来发包的网卡接口名称
+--adapter-ip <ip-address> 指定发包的IP地址
+--adapter-port <port> 指定发包的源端口
+--adapter-mac <mac-address> 指定发包的源MAC地址
+--router-mac <mac address> 指定网关的MAC地址
+--exclude <ip/range> IP地址范围黑名单，防止masscan扫描
+--**excludefile** <filename> 指定IP地址范围黑名单文件
+--**includefile**，-iL <filename> 读取一个范围列表进行扫描
+--ping 扫描应该包含ICMP回应请求
+--append-output 以附加的形式输出到文件
+--iflist 列出可用的网络接口，然后退出
+--retries 发送重试的次数，以1秒为间隔
+--nmap 打印与nmap兼容的相关信息
+--http-user-agent <user-agent> 设置user-agent字段的值
+--show [open,close] 告诉要显示的端口状态，默认是显示开放端口
+--noshow [open,close] 禁用端口状态显示
+--pcap <filename> 将接收到的数据包以libpcap格式存储
+--regress 运行回归测试，测试扫描器是否正常运行
+--ttl <num> 指定传出数据包的TTL值，默认为255
+--wait <seconds> 指定发送完包之后的等待时间，默认为10秒
+--offline 没有实际的发包，主要用来测试开销
+-sL 不执行扫描，主要是生成一个随机地址列表
+--readscan <binary-files> 读取从-oB生成的二进制文件，可以转化为XML或者JSON格式.
+--connection-timeout <secs> 抓取banners时指定保持TCP连接的最大秒数，默认是30秒。
+
+
+**参考链接**
+[Masscan-Github][2]
+[比一比Nmap、Zmap、Masscan三种扫描工具][3]
+[Masscan：最快的互联网IP端口扫描器][4]
+
+
+
+  [1]: https://www.ntop.org/products/packet-capture/pf_ring/
+  [2]: https://github.com/robertdavidgraham/masscan
+  [3]: http://www.freebuf.com/sectool/119340.html
+  [4]: https://blog.csdn.net/whatday/article/details/71427943
