@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      扫描全网IP关键字工具-SearchKey
+title:      全网寻找关键字-SearchKey
 subtitle:   批量大法好
 date:       2018-10-19
 author:     蓝胖
-header-img: img/post-bg-2018-10-11.jpg
+header-img: img/post-bg-2018-10-19.jpg
 catalog: true
 tags:
     - Python
@@ -13,11 +13,11 @@ tags:
 
 ---
 
->“一个人至少拥有一个梦想，有一个理由去坚强。心若没有栖息的地方，到哪里都是在流浪”
+>“你的心灵是疯狂与天才的奇妙组合。我刚把天才那部分拿走了”
 
 
 
- > 发现一个可以批量操作的思路，但是苦于没有工具，就自己动手做一个吧。代码能力一般，能用就好~ 
+ > 发现一个可以批量操作的思路，谷歌找也找不到多少结果。就自己动手做一个工具吧。代码能力一般，能用就好~ 
 
 # 简介
 
@@ -45,7 +45,9 @@ optional arguments:
   -t NUM, --thread NUM  Number of threads for program
   -p PORT, --port PORT  Port of scanning
 ```
-![result][1]
+
+
+![iw4V4f.png](https://s1.ax1x.com/2018/10/19/iw4V4f.png)
 
 # 说明
 ```
@@ -54,6 +56,3 @@ Pyhon3
 默认80端口、20线程
 ```
 
-
-
-  [1]: https://github.com/lanpan999/SearchKey/blob/master/img/result.png
