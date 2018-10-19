@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      SearchKey-全网寻找关键字
+title:      SearchKey-自建全网寻找关键字工具
 subtitle:   批量大法好
 date:       2018-10-19
 author:     蓝胖
