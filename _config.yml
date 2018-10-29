@@ -3,7 +3,7 @@ title: 蓝胖
 SEOTitle: 蓝胖的博客|渗透测试
 header-img: img/post-bg-desk.jpg
 email: lanpang999@gmail.com
-description: "Every failure is leading towards success."
+description: "人生不过百年 唯有思绪永存"
 keyword: "蓝胖的博客,渗透测试,网络安全,WEB安全,信息安全,python工具"
 url: "http://lanpan999.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
@@ -11,7 +11,7 @@ github_repo: "https://github.com/lanpan999/lanpan999.github.io.git" # you code r
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "虽然我很菜，但是我想的很美啊！！"
+sidebar-about-description: "暗号不变，江湖再见"
 sidebar-avatar: /img/about-BY-gentle.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
