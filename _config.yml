@@ -112,3 +112,12 @@ friends: [
         # href: "https://developer.apple.com/"
     }
 ]
+
+
+
+deploy:
+  type: git
+  repo: 
+    github: https://github.com/lanpan999/lanpan999.github.io
+    coding: https://git.coding.net/lanpang999/lanpang999.git
+  branch: master
