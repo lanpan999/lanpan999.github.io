@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Android渗透框架-Drozer教程
-subtitle:   创建多窗口
+subtitle:   安卓渗透学习
 date:       2019-04-05
 author:     蓝胖
 header-img: img/post-bg-2019-04-05.jpg
