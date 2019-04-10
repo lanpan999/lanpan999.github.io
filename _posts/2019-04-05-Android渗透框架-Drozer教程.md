@@ -153,7 +153,10 @@ run app.provider.query content://com.mwr.example.sieve.DBContentProvider/Passwor
 [![AR4HH0.png](https://s2.ax1x.com/2019/04/05/AR4HH0.png)](https://imgchr.com/i/AR4HH0)
 ##### 注入点位置进行扫描
 ```python
+# 对某一个App注入漏洞扫描
 run scanner.provider.injection -a  com.mwr.example.sieve
+# 对手机里所有APP注入漏洞扫描
+run scanner.provider.injection
 ```
 
 [![AR4qEV.png](https://s2.ax1x.com/2019/04/05/AR4qEV.png)](https://imgchr.com/i/AR4qEV)
