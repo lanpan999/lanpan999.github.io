@@ -2,7 +2,7 @@
 layout:     post
 title:      Python版的Burp-Sqlmap插件
 subtitle:   Burp插件
-date:       2019-04-05
+date:       2019-04-10
 author:     蓝胖
 header-img: img/post-bg-2019-04-10.jpg
 catalog: true
